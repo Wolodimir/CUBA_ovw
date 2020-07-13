@@ -1,0 +1,2 @@
+alter table CUBA_SESSION add constraint FK_CUBA_SESSION_ON_SPEAKER foreign key (SPEAKER_ID) references CUBA_SPEAKER(ID);
+create index IDX_CUBA_SESSION_ON_SPEAKER on CUBA_SESSION (SPEAKER_ID);
