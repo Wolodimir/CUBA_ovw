@@ -1,5 +1,6 @@
 package com.company.cuba.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -76,5 +77,11 @@ public class Session extends StandardEntity {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    @Transient
+    @MetaProperty(related = {"startDate", "duration"})
+    public LocalDateTime getEndDate(){
+        return (startDate != null && duration != null)? startDate.plusHours(duration) : null;
     }
 }
